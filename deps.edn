@@ -5,8 +5,8 @@
  ;; power, torque) that motor.solver/size-for-power can then size a motor for.
  ;; A blade-resolved kami-cfd solve registers a higher-fidelity kind on the
  ;; same contract later.
- :deps {io.github.kotoba-lang/datom                  {:git/sha "d27a5833d59d909367956705f2ec931399c891ee"}
-        io.github.kotoba-lang/kami-engine-cae-solver {:git/sha "53e27f18ddcf10615a8a17adbb78018b1ab64a17"}}
+ :deps {io.github.kotoba-lang/datom                  {:git/sha "3a45462b3b6da018e24c65d12f8f3d3250a0c38e"}
+        io.github.kotoba-lang/kami-engine-cae-solver {:git/sha "214a1907890b75cbb5ed6781cf3dea8cba0f4351"}}
  :aliases
  {:test {:extra-paths ["test"]
          :extra-deps {io.github.cognitect-labs/test-runner
