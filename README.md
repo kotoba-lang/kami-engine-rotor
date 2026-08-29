@@ -53,3 +53,29 @@ A 15-inch two-blade prop making 10 N at sea level (a 1 kg-per-rotor quadrotor)
 at 5000 rpm: **92.1 W shaft, 11.08 g/W, 0.176 N·m, tip Mach 0.293, CT/σ 0.090,
 22.6 g of blade.** Every expected value in the test suite was computed by hand
 from the governing equation before the code was run.
+
+## The chain, actually run
+
+A 5 kg quadrotor at 500 m, disc loading 90 N/m², tip Mach 0.45, hover throttle
+50% (so each rotor must be able to make twice its hover thrust):
+
+```
+hover thrust/rotor     12.26 N
+rotor diameter        416 mm  @ 6983 rpm
+hover shaft power     117.1 W/rotor    10.68 g/W
+tip Mach / CT-sigma   0.450 / 0.042    not stalled at hover or at peak
+peak shaft power      0.323 kW/rotor   -> motor.solver/size-for-power
+electrical hover      585 W (4 rotors, 80% motor+ESC)
+```
+
+585 W for a 5 kg quadrotor is the right order for a real airframe of that size,
+which is the point of the chain: `size-for-thrust` hands
+`motor.solver/size-for-power` a peak-kW target it did not have to invent.
+
+**One caveat, stated rather than buried.** `kami-engine-motor` returns 105 g for
+that 0.44 N·m motor. Its air-gap shear model was written for traction motors and
+is being extrapolated two orders of magnitude down in size here; real BLDC motors
+in this class weigh more. The rotor numbers above are inside their model's range;
+the motor mass is not. Sizing a drone end-to-end needs a small-motor calibration
+that does not exist yet — as does a Li-ion pack solver, without which endurance
+is not computable at all.
