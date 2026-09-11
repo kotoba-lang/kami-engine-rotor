@@ -11,7 +11,7 @@ what that target should be. `size-for-thrust` produces exactly the input
 `motor.solver/size-for-power` consumes.
 
 Part of the clean-sheet design / CAE stack (purpose-split shared libs).
-Zero-dep portable `.cljc`. Run `clojure -M:dev:test`.
+Zero-dep portable `.cljc`. Run `kbb -M:dev:test`.
 
 ## Two power models, kept honest against each other
 
